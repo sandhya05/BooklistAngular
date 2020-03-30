@@ -1,0 +1,49 @@
+<!-- <p>
+  register works!
+</p> -->
+
+<div class="container" >
+    <form  [formGroup] ="registerForm" (ngSubmit)="register()">
+        <div class="form-group">
+            <label for="userName">UserName</label>
+            <input type="text"  class="form-control" formControlName="userName" required>
+            <div  *ngIf="registerForm.get('userName').status =='INVALID'"  class="alert alert-danger">
+                user name is required
+            </div> 
+        </div>
+        <div class="form-group" >
+            <label for="userName">Phone Number</label>
+            <input  type="text"  class="form-control" formControlName="phoneNumber" length="8" required><br>
+
+            <label>Pin Code<br></label>
+            <input  type="text" class="form-control" formControlName="zip" required><br>
+        </div>
+        <div class="form-group" >
+            <label for="userName">Email</label>
+            <input  type="text"  class="form-control" formControlName="email" >
+        </div>
+
+        <div class="form-group">
+            <label>Door Number</label>
+            <input type="text" class="form-control" formControlName="doorNumber"><br>
+            <label>City<br></label>
+            <input  type="text" class="form-control" formControlName="city"><br>
+        
+            <label for="userName">ZipCode</label><input type="text" name="zipcode" id="zipcode" class="form-control" pattern="^[1-9][0-9]{5}$"
+            [(ngModel)]="zipcode"  required #zip="ngModel">
+          
+            <!-- zip.error? indicates checks incase of error -->
+            <div class="alert alert-danger" *ngIf='(zip.invalid && zip.errors?.required)'> 
+               zipcode is required
+            </div>
+           
+            <div class="alert alert-danger" *ngIf='(zip.invalid && zip.errors?.pattern)'>
+              enter the valid zipcode
+            </div>
+        </div>
+        
+        <div>
+            <button class="btn btn-primary" (click)="register()">Register</button>
+        </div>  
+    </form>
+</div>

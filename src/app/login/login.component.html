@@ -1,0 +1,27 @@
+
+<!-- Form for login with Bootstrap -->
+
+<form name="login" #lgForm="ngForm">
+  <label for="userName">UserName</label><input type="text" class="form-control" name="username" [(ngModel)]="userName"  required   #username="ngModel" /><br>
+  <!-- <div class="alert alert-danger" [hidden]='username.valid || username.untouched'> -->
+  <div class="alert alert-danger" *ngIf='(username.untouched)'>
+  user name is required
+  </div><br>
+
+  <!-- Template reference : #username="ngModel" used for hidden -->
+  <label for="userName">Password</label><input type="password" class="form-control" name="password" [(ngModel)]="passWord" [value]="passWord"  required   #password="ngModel"/>
+  <!-- <div class="alert alert-danger" [hidden]='password.valid || password.untouched'> -->
+  <div class="alert alert-danger" *ngIf='(password.untouched || lgForm.submitted)'>
+    password is required  
+  </div><br>
+
+
+  <!-- <div>Username: {{userName}}</div>
+  <div>touched : {{username.untouched}}</div>       when u click on box 
+  <div>pristine : {{username.pristine}}</div>       if control value not changed
+  <div>dirty : {{username.dirty}}</div>             control value changed
+  <div>valid : {{username.valid}}</div>             enter valid text
+  <div>invalid : {{username.invalid}}</div> -->
+  <!-- <div>Form Validity : {{lgForm.invalid}}</div> -->
+  <button class="btn btn-primary" (click)="login()" [disabled] ="lgForm.invalid">Login</button>
+</form>

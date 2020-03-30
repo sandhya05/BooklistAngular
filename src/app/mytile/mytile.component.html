@@ -1,0 +1,11 @@
+
+  <!-- <td>{{mytile.name | uppercase}}</td> -->
+  <td><a [routerLink]="['/tiles',mytile.Id]">{{mytile.name}}</a></td>
+  <td>{{mytile.model | lowercase}}</td>
+  <td>{{mytile.price | currency : INR}}</td>
+  <td><img width="200" height="200" [src]="imagePath+mytile.image" alt="" srcset=""></td>  
+  <td>{{mytile.status | status}}</td>
+  <!-- <td>{{mytile.rating}}</td>-->
+  <!-- <td><app-star></app-star></td>  -->
+  <!-- <td><app-star [rating]='mytile.rating'></app-star></td> -->
+  <td><app-star [rating]='mytile.rating' (ratingClicked)="updateRatingToDb()"></app-star></td>

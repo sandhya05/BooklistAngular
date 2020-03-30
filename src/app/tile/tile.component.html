@@ -1,0 +1,41 @@
+
+<!-- To display date -->
+<span style="float:right;">Today's date : {{today|date}} </span>
+
+<!-- Filter for the tile details table -->
+<div style="margin:50px 50px;">
+   <div class="form-group">
+    Type Name to Filter : &nbsp;&nbsp;
+    <span><input type="text" [(ngModel)]="filterText" name="filterText" id="filterText" />&nbsp;&nbsp;</span>
+    <button class="btn btn-primary" (click)="filter()">Go</button>
+  </div>
+  <!-- <span>
+    <label for="fiterText">Select dropdown to Filter : </label>
+    <select [(ngModel)]="selectedFilter" id="selectBox" name="filterBox">
+      <option *ngFor="let filter of filterOptions">{{filter}}</option>
+    </select>
+  </span> -->  
+</div>
+
+
+<!-- Table for displaying tile stock details -->
+<table *ngIf="filteredTiles && filteredTiles.length>0" class="table table-bordered" style="margin:20px 20px;">
+  <tr>
+    <td>Name</td>
+    <td>Model</td>
+    <td>Price</td>
+    <td>Image</td>
+    <td>Status</td>
+    <td>Rating</td>
+  </tr>
+ 
+  <tbody>
+    <tr *ngFor="let tile of filteredTiles" app-mytile [mytile]='tile'>
+    </tr>  
+  </tbody>
+</table>
+
+
+<div [hidden] = "tiles && tiles.length >0">
+  No Tiles Available
+</div>
