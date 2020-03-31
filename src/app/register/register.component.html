@@ -30,7 +30,7 @@
             <input  type="text" class="form-control" formControlName="city"><br>
         
             <label for="userName">ZipCode</label><input type="text" name="zipcode" id="zipcode" class="form-control" pattern="^[1-9][0-9]{5}$"
-            [(ngModel)]="zipcode"  required #zip="ngModel">
+            [(ngModel)]="zip"  required #zip="ngModel">
           
             <!-- zip.error? indicates checks incase of error -->
             <div class="alert alert-danger" *ngIf='(zip.invalid && zip.errors?.required)'> 
